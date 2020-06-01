@@ -11,7 +11,7 @@ import java.util.List;
 public class 获得方大产品sql {
 
     public static void main(String[] args) {
-        String fileName = "十年庆3个.csv";
+        String fileName = "金胡杨新增产品0521.csv";
         List<CsvRow> rows =   MyCsvUtil.getData(fileName);
         rows.remove(0);
         List<Product> products =toProducts(rows);

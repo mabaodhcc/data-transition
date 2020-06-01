@@ -61,8 +61,8 @@ public class 客户经理关联05 {
         List list=new ArrayList<AccMangeRel>(rows.size());
         for (CsvRow row: rows) {
             Object [] object=row.toArray();
-            AccMangeRel accMangeRel =new AccMangeRel(object[0].toString().trim(),object[1].toString().trim(),object[2].toString().trim(),object[3].toString().trim(),object[4].toString().trim(),object[5].toString().trim(),object[6].toString().trim(),object[7].toString().trim(),object[8].toString().trim());
-            list.add(accMangeRel);
+            //AccMangeRel accMangeRel =new AccMangeRel(object[0].toString().trim(),object[1].toString().trim(),object[2].toString().trim(),object[3].toString().trim(),object[4].toString().trim(),object[5].toString().trim(),object[6].toString().trim(),object[7].toString().trim(),object[8].toString().trim());
+            //list.add(accMangeRel);
         }
         return list;
     }
