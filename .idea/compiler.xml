@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="com.dhcc" />
         <module name="data-transition" />
+        <module name="guodong" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
