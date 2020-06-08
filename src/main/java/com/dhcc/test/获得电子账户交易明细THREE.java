@@ -8,9 +8,10 @@ import com.dhcc.util.MyCsvUtil;
 import java.util.ArrayList;
 import java.util.List;
 
-public class 获得电子账户交易明细 {
+
+public class 获得电子账户交易明细THREE {
     public static void main(String[] args) {
-        String fileName = "201803.csv";
+        String fileName = "202004.csv";
         List<CsvRow> rows = MyCsvUtil.getData(fileName);
         rows.remove(0);
         List<TradeDetail> tradeDetails = toTradeDetail(rows);
@@ -38,9 +39,30 @@ public class 获得电子账户交易明细 {
             String 交易订单号 = tradeDetail.get交易订单号();
             String 明细状态 = tradeDetail.get明细状态();
             String 场景类型 = tradeDetail.get场景类型();
-            String trade="";
-            stringBuilder.append(trade);
+            String sql = "(select ACC_NO_NEW from AC_SEQN_MAP where ACC_NO_OLD = '"+账号+"' and ACC_SEQN_NEW='1')";
+            //DE_MST_HST
+            String basesql = "INSERT INTO DE_MST_HST (\"TRC_NO\", \"TRC_CNT\", \"OPN_BR_NO\", \"ACC_ID\", \"ACC_SEQN\"," +
+                    " \"ACC_NO\", \"ACC_NAME\", \"PRDT_NO\", \"TX_CODE\", \"SUB_STEP_NAME\", \"DE_ADD_FLAG\"," +
+                    " \"DE_CT_FLAG\", \"DE_TX_AMT\", \"DE_BOOK_BAL\", \"DE_BAL\", \"DE_INTS_ACM\", \"DE_TX_DATE\", " +
+                    "\"DE_NAT_DATE\", \"DE_TX_TIME\", \"DE_NOTE_TYPE\", \"DE_NOTE_NO\", \"DE_HST_CNT\", \"DE_MSR_FLAG\"," +
+                    " \"DE_PWD_FLAG\", \"DE_BRF_CODE\", \"DE_BRF\", \"DE_OPER\", \"DE_CHK\", \"DE_AUTH\", \"DE_OPER_TRC_NO\"," +
+                    " \"DE_ACC_NO\", \"DE_ACC_ID\",\"DE_ACC_SEQN\", \"DE_ACC_NAME\", \"DE_BR_NO\", \"DE_AGT_CERT_TYPE\", \"DE_AGT_CERT_NO\"," +
+                    " \"DE_AGT_CERT_NAME\", \"DE_CHNL_TYPE\", \"DE_CHNL_DATE\", \"DE_CHNL_TRC_NO\", " +
+                    "\"DE_PRDT_TRC_NO\", \"DE_TX_ADDR\", \"DE_BUS_TYPE\", \"DE_AUTH_CODE\", \"DE_RECE_NO\", \"DE_PRDT_DATE\", " +
+                    "\"AG_ACC_NO\", \"AG_ACC_SEQN\", \"DE_INTS\", \"DE_TAX_INTS\", \"DE_FEE_AMT\", \"DE_ID_FLAG\", \"DE_OD_NO\"," +
+                    " \"DE_STS\", \"SCENE_TYPE\", \"IMP_CHNL_TYPE\", \"RECO_DATE\", \"RECO_TRC_NO\", \"DE_PRDT_TRC_CNT\") " +
+                    "VALUES ("+主机流水号+", "+流水笔次+", '770088', 9999, 1, "+sql+", '"+户名+"', '"+产品编码+"', '"+交易码+"'," +
+                    " NULL, '"+增减标志+"', '"+现转标志+"' , "+交易金额+", "+余额+","+余额+", 0, '"+交易日期+"', '"+机器日期+"'," +
+                    " '000000', NULL, NULL, 1, NULL,'PF00','"+摘要代码+"','"+摘要+"', NULL,NULL,NULL,NULL,'"+对方账号+"',NULL,NULL," +
+                    "'"+对方名称+"',NULL,NULL,NULL,NULL,'0061',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"+sql+",1,NULL,NULL," +
+                    "NULL,NULL,NULL,'"+明细状态+"',NULL,NULL,NULL,NULL,NULL);\n";
+
+
+            stringBuilder.append(basesql);
         }
+        String updSql = "update de_mst_hst a set ACC_ID=(select b.acc_id from mdm_acc_rel b where a.ACC_NO=b.ACC_NO and a.OPN_BR_NO='770088')" +
+                "where exists (select 1 from mdm_acc_rel b where a.ACC_NO=b.ACC_NO and a.OPN_BR_NO='770088')";
+        stringBuilder.append(updSql);
         MyCsvUtil.writFile(stringBuilder.toString(),fileName);
     }
 

@@ -1,32 +1,23 @@
 package com.dhcc.entity;
 
-public class Ecif {
+public class MdmAccRel {
+    private String 开户机构号;
+    private String 流水号;
+    private String 证件类型;
+    private String 证件号;
+    private String 客户姓名;
+    private String 手机号;
+    private String 身份证起始日期;
+    private String 身份证有效结束日期;
+    private String 身份证注册地;
+    private String 客户手机银行注册日期;
+    private String 注册时间;
+    private String 客户注册预留信息;
+    private String 电子账号;
+    private String 账户性质;
+    private String 账户状态;
+    private String 开户渠道;
     private String 该客户系统内唯一编号;
-    private  String 开户机构号;
-    private  String 流水号;
-    private  String 证件类型;
-    private  String 证件号;
-    private  String 客户姓名;
-    private  String 手机号;
-    private  String 身份证起始日期;
-    private  String 身份证有效结束日期;
-    private  String 身份证注册地;
-    private  String 客户手机银行注册日期;
-    private  String 注册时间;
-    private  String 电子账号;
-    private  String 账户性质;
-    private  String 账户状态;
-    private  String 开户渠道;
-    private  String 核心客户号;
-    private  String 网银客户号;
-
-    public String get该客户系统内唯一编号() {
-        return 该客户系统内唯一编号;
-    }
-
-    public void set该客户系统内唯一编号(String 该客户系统内唯一编号) {
-        this.该客户系统内唯一编号 = 该客户系统内唯一编号;
-    }
 
     public String get开户机构号() {
         return 开户机构号;
@@ -116,6 +107,14 @@ public class Ecif {
         this.注册时间 = 注册时间;
     }
 
+    public String get客户注册预留信息() {
+        return 客户注册预留信息;
+    }
+
+    public void set客户注册预留信息(String 客户注册预留信息) {
+        this.客户注册预留信息 = 客户注册预留信息;
+    }
+
     public String get电子账号() {
         return 电子账号;
     }
@@ -148,23 +147,15 @@ public class Ecif {
         this.开户渠道 = 开户渠道;
     }
 
-    public String get核心客户号() {
-        return 核心客户号;
+    public String get该客户系统内唯一编号() {
+        return 该客户系统内唯一编号;
     }
 
-    public void set核心客户号(String 核心客户号) {
-        this.核心客户号 = 核心客户号;
+    public void set该客户系统内唯一编号(String 该客户系统内唯一编号) {
+        this.该客户系统内唯一编号 = 该客户系统内唯一编号;
     }
 
-    public String get网银客户号() {
-        return 网银客户号;
-    }
-
-    public void set网银客户号(String 网银客户号) {
-        this.网银客户号 = 网银客户号;
-    }
-
-    public Ecif(String 开户机构号, String 流水号, String 证件类型, String 证件号, String 客户姓名, String 手机号, String 身份证起始日期, String 身份证有效结束日期, String 身份证注册地, String 客户手机银行注册日期, String 注册时间, String 电子账号, String 账户性质, String 账户状态, String 开户渠道, String 核心客户号, String 网银客户号) {
+    public MdmAccRel(String 开户机构号, String 流水号, String 证件类型, String 证件号, String 客户姓名, String 手机号, String 身份证起始日期, String 身份证有效结束日期, String 身份证注册地, String 客户手机银行注册日期, String 注册时间, String 客户注册预留信息, String 电子账号, String 账户性质, String 账户状态, String 开户渠道, String 该客户系统内唯一编号) {
         this.开户机构号 = 开户机构号;
         this.流水号 = 流水号;
         this.证件类型 = 证件类型;
@@ -176,14 +167,11 @@ public class Ecif {
         this.身份证注册地 = 身份证注册地;
         this.客户手机银行注册日期 = 客户手机银行注册日期;
         this.注册时间 = 注册时间;
+        this.客户注册预留信息 = 客户注册预留信息;
         this.电子账号 = 电子账号;
         this.账户性质 = 账户性质;
         this.账户状态 = 账户状态;
         this.开户渠道 = 开户渠道;
-        this.核心客户号 = 核心客户号;
-        this.网银客户号 = 网银客户号;
-    }
-
-    public Ecif() {
+        this.该客户系统内唯一编号 = 该客户系统内唯一编号;
     }
 }

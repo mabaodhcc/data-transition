@@ -1,8 +1,9 @@
 package com.dhcc.entity;
 
 public class SubAccount {
-    private String 客户号,电子账号,账户序号, 旧的产品号,开户时间,起息日,终止日,上次结息日,产品名称,账户余额,冻结状态,冻结金额,止付状态,止付金额,控制金额,利率,积数,最后动账日,累计收益,预计收益,透支标志,开户利率,账户状态,提现标识,签约状态,客户经理,签约日期,开户金额,开户渠道;
+    private String 客户号,电子账号,旧的产品号,开户时间,起息日,终止日,上次结息日,产品名称,冻结状态,止付状态,利率,积数,最后动账日,透支标志,开户利率,账户状态,提现标识,签约状态,客户经理,签约日期,开户金额,开户渠道,账户余额,控制金额,累计收益,预计收益,冻结金额,止付金额,账户序号;
     private String 现在的产品号;
+
     public String get客户号() {
         return 客户号;
     }
@@ -17,14 +18,6 @@ public class SubAccount {
 
     public void set电子账号(String 电子账号) {
         this.电子账号 = 电子账号;
-    }
-
-    public String get账户序号() {
-        return 账户序号;
-    }
-
-    public void set账户序号(String 账户序号) {
-        this.账户序号 = 账户序号;
     }
 
     public String get旧的产品号() {
@@ -75,14 +68,6 @@ public class SubAccount {
         this.产品名称 = 产品名称;
     }
 
-    public String get账户余额() {
-        return 账户余额;
-    }
-
-    public void set账户余额(String 账户余额) {
-        this.账户余额 = 账户余额;
-    }
-
     public String get冻结状态() {
         return 冻结状态;
     }
@@ -91,36 +76,12 @@ public class SubAccount {
         this.冻结状态 = 冻结状态;
     }
 
-    public String get冻结金额() {
-        return 冻结金额;
-    }
-
-    public void set冻结金额(String 冻结金额) {
-        this.冻结金额 = 冻结金额;
-    }
-
     public String get止付状态() {
         return 止付状态;
     }
 
     public void set止付状态(String 止付状态) {
         this.止付状态 = 止付状态;
-    }
-
-    public String get止付金额() {
-        return 止付金额;
-    }
-
-    public void set止付金额(String 止付金额) {
-        this.止付金额 = 止付金额;
-    }
-
-    public String get控制金额() {
-        return 控制金额;
-    }
-
-    public void set控制金额(String 控制金额) {
-        this.控制金额 = 控制金额;
     }
 
     public String get利率() {
@@ -145,22 +106,6 @@ public class SubAccount {
 
     public void set最后动账日(String 最后动账日) {
         this.最后动账日 = 最后动账日;
-    }
-
-    public String get累计收益() {
-        return 累计收益;
-    }
-
-    public void set累计收益(String 累计收益) {
-        this.累计收益 = 累计收益;
-    }
-
-    public String get预计收益() {
-        return 预计收益;
-    }
-
-    public void set预计收益(String 预计收益) {
-        this.预计收益 = 预计收益;
     }
 
     public String get透支标志() {
@@ -235,39 +180,60 @@ public class SubAccount {
         this.开户渠道 = 开户渠道;
     }
 
-    public SubAccount(String 客户号, String 电子账号, String 账户序号, String 产品号, String 开户时间, String 起息日, String 终止日, String 上次结息日, String 产品名称, String 账户余额, String 冻结状态, String 冻结金额, String 止付状态, String 止付金额, String 控制金额, String 利率, String 积数, String 最后动账日, String 累计收益, String 预计收益, String 透支标志, String 开户利率, String 账户状态, String 提现标识, String 签约状态, String 客户经理, String 签约日期, String 开户金额, String 开户渠道) {
-        this.客户号 = 客户号;
-        this.电子账号 = 电子账号;
-        this.账户序号 = 账户序号;
-        this.旧的产品号 = 产品号;
-        this.开户时间 = 开户时间;
-        this.起息日 = 起息日;
-        this.终止日 = 终止日;
-        this.上次结息日 = 上次结息日;
-        this.产品名称 = 产品名称;
-        this.账户余额 = 账户余额;
-        this.冻结状态 = 冻结状态;
-        this.冻结金额 = 冻结金额;
-        this.止付状态 = 止付状态;
-        this.止付金额 = 止付金额;
-        this.控制金额 = 控制金额;
-        this.利率 = 利率;
-        this.积数 = 积数;
-        this.最后动账日 = 最后动账日;
-        this.累计收益 = 累计收益;
-        this.预计收益 = 预计收益;
-        this.透支标志 = 透支标志;
-        this.开户利率 = 开户利率;
-        this.账户状态 = 账户状态;
-        this.提现标识 = 提现标识;
-        this.签约状态 = 签约状态;
-        this.客户经理 = 客户经理;
-        this.签约日期 = 签约日期;
-        this.开户金额 = 开户金额;
-        this.开户渠道 = 开户渠道;
+    public String get账户余额() {
+        return 账户余额;
     }
 
-    public SubAccount() {
+    public void set账户余额(String 账户余额) {
+        this.账户余额 = 账户余额;
+    }
+
+    public String get控制金额() {
+        return 控制金额;
+    }
+
+    public void set控制金额(String 控制金额) {
+        this.控制金额 = 控制金额;
+    }
+
+    public String get累计收益() {
+        return 累计收益;
+    }
+
+    public void set累计收益(String 累计收益) {
+        this.累计收益 = 累计收益;
+    }
+
+    public String get预计收益() {
+        return 预计收益;
+    }
+
+    public void set预计收益(String 预计收益) {
+        this.预计收益 = 预计收益;
+    }
+
+    public String get冻结金额() {
+        return 冻结金额;
+    }
+
+    public void set冻结金额(String 冻结金额) {
+        this.冻结金额 = 冻结金额;
+    }
+
+    public String get止付金额() {
+        return 止付金额;
+    }
+
+    public void set止付金额(String 止付金额) {
+        this.止付金额 = 止付金额;
+    }
+
+    public String get账户序号() {
+        return 账户序号;
+    }
+
+    public void set账户序号(String 账户序号) {
+        this.账户序号 = 账户序号;
     }
 
     public String get现在的产品号() {
@@ -277,4 +243,40 @@ public class SubAccount {
     public void set现在的产品号(String 现在的产品号) {
         this.现在的产品号 = 现在的产品号;
     }
+
+    public SubAccount(String 客户号, String 电子账号, String 旧的产品号, String 开户时间, String 起息日, String 终止日, String 上次结息日, String 产品名称, String 冻结状态, String 止付状态, String 利率, String 积数, String 最后动账日, String 透支标志, String 开户利率, String 账户状态, String 提现标识, String 签约状态, String 客户经理, String 签约日期, String 开户金额, String 开户渠道, String 账户余额, String 控制金额, String 累计收益, String 预计收益, String 冻结金额, String 止付金额, String 账户序号) {
+        this.客户号 = 客户号;
+        this.电子账号 = 电子账号;
+        this.旧的产品号 = 旧的产品号;
+        this.开户时间 = 开户时间;
+        this.起息日 = 起息日;
+        this.终止日 = 终止日;
+        this.上次结息日 = 上次结息日;
+        this.产品名称 = 产品名称;
+        this.冻结状态 = 冻结状态;
+        this.止付状态 = 止付状态;
+        this.利率 = 利率;
+        this.积数 = 积数;
+        this.最后动账日 = 最后动账日;
+        this.透支标志 = 透支标志;
+        this.开户利率 = 开户利率;
+        this.账户状态 = 账户状态;
+        this.提现标识 = 提现标识;
+        this.签约状态 = 签约状态;
+        this.客户经理 = 客户经理;
+        this.签约日期 = 签约日期;
+        this.开户金额 = 开户金额;
+        this.开户渠道 = 开户渠道;
+        this.账户余额 = 账户余额;
+        this.控制金额 = 控制金额;
+        this.累计收益 = 累计收益;
+        this.预计收益 = 预计收益;
+        this.冻结金额 = 冻结金额;
+        this.止付金额 = 止付金额;
+        this.账户序号 = 账户序号;
+    }
+
+    public SubAccount() {
+    }
+
 }

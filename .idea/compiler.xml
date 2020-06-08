@@ -6,8 +6,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="com.dhcc" />
         <module name="data-transition" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com.dhcc" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
