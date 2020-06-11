@@ -1,6 +1,7 @@
 package com.dhcc.test;
 
 import cn.hutool.core.text.csv.CsvRow;
+import com.dhcc.constant.Constant;
 import com.dhcc.entity.AccMangeRel;
 import com.dhcc.entity.客户风险信息过度表;
 import com.dhcc.util.MyCsvUtil;
@@ -52,7 +53,7 @@ public class 客户风险信息过度 {
                 sql.append("null,");
             }
             sql.append("null,");
-            sql.append("'850000'");
+            sql.append("'"+ Constant.tx_br_no+"'");
             sql.append(");\n");
         }
         for(客户风险信息过度表 l : list){

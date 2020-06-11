@@ -1,6 +1,7 @@
 package com.dhcc.test;
 
 import cn.hutool.core.text.csv.CsvRow;
+import com.dhcc.constant.Constant;
 import com.dhcc.entity.CifInfoEntity;
 import com.dhcc.util.MyCsvUtil;
 import java.util.ArrayList;
@@ -17,13 +18,13 @@ public class 过渡电子账户部分客户信息ONE {
     public static void main(String[] args) {
         String fileName = "过渡电子账户部分客户信息.csv";
         List<CsvRow> rows = MyCsvUtil.getData(fileName);
-        rows.remove(0);
+//        rows.remove(0);
         List<CifInfoEntity> cifInfoEntities = csv2CifInfoEntity(rows);
         StringBuilder sql = new StringBuilder();
         getSql(cifInfoEntities,sql);
         //sql 格式
         //insert into CIF_INFO_MID (CERT_NO,ACC_NO_NEW,ACC_ID,ACC_NO_OLD,CIF_NO_OLD,CERT_TYPE,CIF_NAME) values();
-        MyCsvUtil.writFile(sql.toString(),fileName);
+        MyCsvUtil.writFile(sql.toString(),fileName+"one");
     }
 
     private static void getSql(List<CifInfoEntity> cifInfoEntities, StringBuilder sql) {
@@ -36,7 +37,7 @@ public class 过渡电子账户部分客户信息ONE {
             sql.append("'"+cifInfoEntity.getOld_cif_no()+"',");
             sql.append("'ZJ01',");
             sql.append("'"+cifInfoEntity.getCert_name()+"',");
-            sql.append("(select CIF_NO from ECIF_CERT_INFO where CERT_NO='"+cifInfoEntity.getCert_no()+"' and BR_NO='770000')");
+            sql.append("(select CIF_NO from ECIF_CERT_INFO where CERT_NO='"+cifInfoEntity.getCert_no()+"' and BR_NO='"+ Constant.br_no+"')");
             sql.append(");");
             sql.append("\n");
         }

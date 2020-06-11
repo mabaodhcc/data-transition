@@ -66,7 +66,7 @@ public class 获得客户风险信息过渡06 {
             else if(评估等级.equals("RL04")){
                 等级描述="激进型";
             }
-            String 机构号= Constant.机构号;
+            String 机构号= Constant.br_no;
             String ECIF_RISK_INFO="INSERT INTO ECIF_RISK_INFO(\"CIF_NO\", \"CIF_NAME\", \"CERT_NO\", \"CERT_TYPE\", \"RISK_DATE\", \"RISK_END_DATE\",\"RISK_LVL\", \"RISK_MO\", \"RISK_DESC\", \"BR_NO\")" +
                         " VALUES ('"+新的客户号+"', '"+客户姓名+"', '"+证件号+"', '"+证件类型+"', '"+评估日期+"', '"+评估截止日期+"', '"+评估等级+"', '"+等级描述+"', NULL, '"+机构号+"');\n";
             stringBuilder.append(ECIF_RISK_INFO);

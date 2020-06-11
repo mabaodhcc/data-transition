@@ -24,7 +24,7 @@ public class 客户经理关联05 {
 
         for (AccMangeRel accMangeRel: accMangeRels) {
 //            String  开户机构编码=accMangeRel.get开户机构编码();
-            String  开户机构编码= Constant.机构号;
+            String  开户机构编码= Constant.br_no;
             String  旧的客户号=accMangeRel.get客户号();
             String  旧的产品编号=accMangeRel.get产品编号();
             Optional<EcifTemp> ecifTempOptional = ecifTemps.stream().filter(p->p.get旧的客户号().equals(旧的客户号)).findFirst();

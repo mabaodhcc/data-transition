@@ -2,6 +2,7 @@ package com.dhcc.test;
 
 
 import cn.hutool.core.text.csv.CsvRow;
+import com.dhcc.constant.Constant;
 import com.dhcc.entity.EcifLoginLog;
 import com.dhcc.entity.Product;
 import com.dhcc.util.MyCsvUtil;
@@ -66,7 +67,7 @@ public class 客户登录日志 {
         String sql = "(select max(seqn)+1 from ECIF_LOGIN_LOG)";
         //ECIF_LOGIN_LOG
         String basesql = "INSERT INTO ECIF_LOGIN_LOG (\"SEQN\", \"CIF_NO\", \"COP_OPER_NO\", \"LOGIN_CHNL\", \"LOGIN_NO\", \"LOGIN_IP\", \"LOGIN_AREA\", \"LOGIN_TIME\", \"LOGIN_OUT_TIME\", \"LOGIN_DEVICE\", \"LOGIN_DESC\", \"TX_BR_NO\") " +
-                "VALUES (" + sql + ", '" + 网银客户号 + "', NULL, NULL, NULL, '"+ip+"', NULL, '" + 登录时间 + "', NUll, '"+device+"', '注册时的登陆', '770088' );\n";
+                "VALUES (" + sql + ", '" + 网银客户号 + "', NULL, NULL, NULL, '"+ip+"', NULL, '" + 登录时间 + "', NUll, '"+device+"', '注册时的登陆', '"+Constant.tx_br_no+"' );\n";
 
 
         stringBuilder.append(basesql);

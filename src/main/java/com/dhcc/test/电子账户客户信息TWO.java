@@ -2,6 +2,7 @@ package com.dhcc.test;
 
 
 import cn.hutool.core.text.csv.CsvRow;
+import com.dhcc.constant.Constant;
 import com.dhcc.entity.MdmAccRel;
 import com.dhcc.entity.Product;
 import com.dhcc.util.MyCsvUtil;
@@ -14,7 +15,7 @@ public class 电子账户客户信息TWO {
     public static void main(String[] args) {
         String fileName = "过渡电子账户部分客户信息.csv";
         List<CsvRow> rows = MyCsvUtil.getData(fileName);
-        rows.remove(0);
+//        rows.remove(0);
         List<MdmAccRel> mdmAccRels =toProducts(rows);
         StringBuilder stringBuilder=new StringBuilder();
         long i = 100000082568L;
@@ -29,7 +30,7 @@ public class 电子账户客户信息TWO {
         String sql = "update ACC_ID_SEQN set ACC_ID_SEQN=(select max(acc_id) from mdm_acc_rel) where ACC_ID_TYPE='IT00';";
         stringBuilder.append(sql);
         //两次用到这个文件
-        MyCsvUtil.writFile(stringBuilder.toString(),fileName+"01");
+        MyCsvUtil.writFile(stringBuilder.toString(),fileName+"two");
     }
     public static List<MdmAccRel> toProducts(List<CsvRow>  rows){
         List<MdmAccRel> mdmAccRels=new ArrayList<>(rows.size());
@@ -93,13 +94,13 @@ public class 电子账户客户信息TWO {
         String 账户状态 = mdmAccRel.get账户状态();
         String 开户渠道 = mdmAccRel.get开户渠道();
         String 该客户系统内唯一编号 = mdmAccRel.get该客户系统内唯一编号();
-        String sql = "(select CIF_NO_NEW from icore_ecif_bth.CIF_INFO_MID where cert_no = '"+证件号+"')";
+        String sql = "(select CIF_NO_NEW from "+Constant.database_ecif+".CIF_INFO_MID where cert_no = '"+证件号+"')";
         //String sql1 = "(select ACC_NO_NEW from AC_SEQN_MAP where ACC_NO_OLD = '"+电子账号+"' and ACC_SEQN_NEW='1')";
         String sql2 = "(select max(acc_id)+1 from mdm_acc_rel)";
 
         //MDM_ACC_REL
         String basesql = "INSERT INTO MDM_ACC_REL (\"OPN_BR_NO\", \"ACC_NO\", \"ACC_ID\", \"ACC_SEQN\", \"ACC_NAME\", \"CIF_NO\", \"MDM_CODE\", \"NOTE_NO\", \"MDM_STS\", \"COLL_STS\", \"REL_BEG_DATE\", \"REL_END_DATE\", \"PAY_USE_PWD_FLAG\", \"PAY_USE_CERT_FLAG\", \"CERT_TYPE\", \"CERT_NO\", \"PAY_USE_CIPHER_FLAG\", \"MDM_MAIN_FLAG\", \"MDM_MAC\", \"MDM_OPEN_FLAG\", \"MDM_IC_INFO\", \"MDM_EXT_STS\") " +
-                "VALUES ('770088', '"+电子账号+"', "+sql2+", 9999, '"+客户姓名+"', "+sql+", 'XN01', NULL, '"+账户状态+"', 'CS01', '"+客户手机银行注册日期+"', '99999999' , 'UF01', 'UF00', '"+证件类型+"', '"+证件号+"', 'UF00', '9999', NULL, '01', NULL, NULL);\n";
+                "VALUES ('"+ Constant.tx_br_no+"', '"+电子账号+"', "+sql2+", 9999, '"+客户姓名+"', "+sql+", 'XN01', NULL, '"+账户状态+"', 'CS01', '"+客户手机银行注册日期+"', '99999999' , 'UF01', 'UF00', '"+证件类型+"', '"+证件号+"', 'UF00', '9999', NULL, '01', NULL, NULL);\n";
 
 
         stringBuilder.append(basesql);

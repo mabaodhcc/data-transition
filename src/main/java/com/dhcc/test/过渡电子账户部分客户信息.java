@@ -1,6 +1,7 @@
 package com.dhcc.test;
 
 import cn.hutool.core.text.csv.CsvRow;
+import com.dhcc.constant.Constant;
 import com.dhcc.entity.CifInfoEntity;
 import com.dhcc.util.MyCsvUtil;
 
@@ -36,7 +37,7 @@ public class 过渡电子账户部分客户信息 {
             sql.append(""+cifInfoEntity.getOld_cif_no()+",");
             sql.append("'ZJ01',");
             sql.append("'"+cifInfoEntity.getCert_name()+"',");
-            sql.append("(select CIF_NO from ECIF_CERT_INFO where CERT_NO='"+cifInfoEntity.getCert_no()+"' and BR_NO='850000')");
+            sql.append("(select CIF_NO from ECIF_CERT_INFO where CERT_NO='"+cifInfoEntity.getCert_no()+"' and BR_NO='"+ Constant.tx_br_no+"')");
             sql.append(");");
             sql.append("\n");
         }

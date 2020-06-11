@@ -2,6 +2,7 @@ package com.dhcc.test;
 
 
 import cn.hutool.core.text.csv.CsvRow;
+import com.dhcc.constant.Constant;
 import com.dhcc.entity.TradeDetail;
 import com.dhcc.util.MyCsvUtil;
 
@@ -51,7 +52,7 @@ public class 获得电子账户交易明细THREE {
                     "\"DE_PRDT_TRC_NO\", \"DE_TX_ADDR\", \"DE_BUS_TYPE\", \"DE_AUTH_CODE\", \"DE_RECE_NO\", \"DE_PRDT_DATE\", " +
                     "\"AG_ACC_NO\", \"AG_ACC_SEQN\", \"DE_INTS\", \"DE_TAX_INTS\", \"DE_FEE_AMT\", \"DE_ID_FLAG\", \"DE_OD_NO\"," +
                     " \"DE_STS\", \"SCENE_TYPE\", \"IMP_CHNL_TYPE\", \"RECO_DATE\", \"RECO_TRC_NO\", \"DE_PRDT_TRC_CNT\") " +
-                    "VALUES ("+主机流水号+", "+流水笔次+", '770088', 9999, 1, "+sql+", '"+户名+"', '"+产品编码+"', '"+交易码+"'," +
+                    "VALUES ("+主机流水号+", "+流水笔次+", '"+ Constant.tx_br_no+"', 9999, 1, "+sql+", '"+户名+"', '"+产品编码+"', '"+交易码+"'," +
                     " NULL, '"+增减标志+"', '"+现转标志+"' , "+交易金额+", "+余额+","+余额+", 0, '"+交易日期+"', '"+机器日期+"'," +
                     " '000000', NULL, NULL, 1, NULL,'PF00','"+摘要代码+"','"+摘要+"', NULL,NULL,NULL,NULL,'"+对方账号+"',NULL,NULL," +
                     "'"+对方名称+"',NULL,NULL,NULL,NULL,'0061',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"+sql+",1,NULL,NULL," +
@@ -60,8 +61,8 @@ public class 获得电子账户交易明细THREE {
 
             stringBuilder.append(basesql);
         }
-        String updSql = "update de_mst_hst a set ACC_ID=(select b.acc_id from mdm_acc_rel b where a.ACC_NO=b.ACC_NO and a.OPN_BR_NO='770088')" +
-                "where exists (select 1 from mdm_acc_rel b where a.ACC_NO=b.ACC_NO and a.OPN_BR_NO='770088')";
+        String updSql = "update de_mst_hst a set ACC_ID=(select b.acc_id from mdm_acc_rel b where a.ACC_NO=b.ACC_NO and a.OPN_BR_NO='"+Constant.tx_br_no+"')" +
+                "where exists (select 1 from mdm_acc_rel b where a.ACC_NO=b.ACC_NO and a.OPN_BR_NO='"+Constant.tx_br_no+"')";
         stringBuilder.append(updSql);
         MyCsvUtil.writFile(stringBuilder.toString(),fileName);
     }

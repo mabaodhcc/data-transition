@@ -73,7 +73,7 @@ public class TianShanUserRegister01 {
             String 网银客户号 =row.get网银客户号();
             String 客户姓名 = row.get客户姓名();
             String 建立日期 = row.get客户手机银行注册日期();
-            String 开户机构号 = Constant.机构号;
+            String 开户机构号 = Constant.br_no;
             String 手机号 = row.get手机号();
             String 证件类型 = row.get证件类型();
             String 证件号 = row.get证件号();
@@ -152,7 +152,7 @@ public class TianShanUserRegister01 {
             String temp=证件号+","+证件类型+","+客户姓名+","+核心客户号+","+网银客户号+","+新的客户编码+","+手机号+","+注册时间+"\n";
             客户信息中间表.append(temp);
         }
-        stringBuilder.append("UPDATE ECIF_NO_CTL set cif_no_seqn = '" + start + "' where br_no = '"+Constant.机构号+"' and cif_type = 'CT01';\n");
+        stringBuilder.append("UPDATE ECIF_NO_CTL set cif_no_seqn = '" + start + "' where br_no = '"+Constant.br_no+"' and cif_type = 'CT01';\n");
 
         return stringBuilder.toString();
     }

@@ -65,7 +65,7 @@ public class 用户注册01 {
             String 旧的客户编码 =row.get该客户系统内唯一编号();
             String 客户姓名 = row.get客户姓名();
             String 建立日期 = row.get客户手机银行注册日期();
-            String 开户机构号 = Constant.机构号;
+            String 开户机构号 = Constant.br_no;
             String 手机号 = row.get手机号();
             String 证件类型 = row.get证件类型();
             String 证件号 = row.get证件号();
@@ -141,7 +141,7 @@ public class 用户注册01 {
             String temp=证件号+","+"新的电子账户未设置"+","+新的客户编码+","+"介质账户的ACC_ID未设置"+","+"旧的电子账户未设置"+","+旧的客户编码+","+证件类型+","+客户姓名+","+"未设置"+","+"未设置"+"\n";
             客户信息中间表.append(temp);
         }
-        stringBuilder.append("UPDATE ECIF_NO_CTL set cif_no_seqn = '" + start + "' where br_no = '"+Constant.机构号+"' and cif_type = 'CT01';\n");
+        stringBuilder.append("UPDATE ECIF_NO_CTL set cif_no_seqn = '" + start + "' where br_no = '"+Constant.br_no+"' and cif_type = 'CT01';\n");
 
         return stringBuilder.toString();
     }

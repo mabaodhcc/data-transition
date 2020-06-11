@@ -40,7 +40,7 @@ public class 介质账户关系表02 {
             acc_id_start=acc_id_start+1;
             String 客户姓名 = row.get客户姓名();
             String 建立日期 = row.get客户手机银行注册日期();
-            String 开户机构号 = Constant.机构号;
+            String 开户机构号 = Constant.br_no;
             String 手机号 = row.get手机号();
             String 证件类型 = row.get证件类型();
             String 证件号 = row.get证件号();

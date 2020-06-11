@@ -1,6 +1,7 @@
 package com.dhcc.test;
 
 import cn.hutool.core.text.csv.CsvRow;
+import com.dhcc.constant.Constant;
 import com.dhcc.entity.AccBindBan;
 import com.dhcc.util.MyCsvUtil;
 import org.apache.poi.ss.formula.functions.T;
@@ -33,12 +34,12 @@ public class ACC_BIND_BAN {
         for (AccBindBan accBindBan : accBindBans){
             sql.append("insert into "+table+" (ACC_NO,ACC_ID,ACC_SEQN,ACC_NAME,BND_ACC_TYPE,BND_ACC_NO,BND_ACC_NAME,BND_DATE,BND_CERT_TYPE,BND_CERT_NO,BND_PHONE_NO,BND_BANK_FLAG,BND_AUTH_FLAG,BND_STS,BR_NO) values(");
             sql.append("(select distinct(ACC_NO_NEW) from AC_SEQN_MAP where ACC_NO_OLD = '"+accBindBan.getAcc_no()+"'),");
-            sql.append("(select ACC_ID from MDM_ACC_REL where CERT_NO='"+accBindBan.getBnd_cert_no()+"' and OPN_BR_NO='850088'),");
+            sql.append("(select ACC_ID from MDM_ACC_REL where CERT_NO='"+accBindBan.getBnd_cert_no()+"' and OPN_BR_NO='"+ Constant.tx_br_no+"'),");
             sql.append("1,");
-            sql.append("(select ACC_NAME from MDM_ACC_REL where CERT_NO='"+accBindBan.getBnd_cert_no()+"' and OPN_BR_NO='850088'),");
+            sql.append("(select ACC_NAME from MDM_ACC_REL where CERT_NO='"+accBindBan.getBnd_cert_no()+"' and OPN_BR_NO='"+Constant.tx_br_no+"'),");
             sql.append("'AT00',");
             sql.append("'"+accBindBan.getBnd_acc_no()+"',");
-            sql.append("(select ACC_NAME from MDM_ACC_REL where CERT_NO='"+accBindBan.getBnd_cert_no()+"' and OPN_BR_NO='850088'),");
+            sql.append("(select ACC_NAME from MDM_ACC_REL where CERT_NO='"+accBindBan.getBnd_cert_no()+"' and OPN_BR_NO='"+Constant.tx_br_no+"'),");
             sql.append("'20180401',");
             sql.append("'ZJ01',");
             sql.append("'"+accBindBan.getBnd_cert_no()+"',");
@@ -46,14 +47,14 @@ public class ACC_BIND_BAN {
             sql.append("'BF00',");
             sql.append("'AF00',");
             sql.append("'BS00',");
-            sql.append("'850088'");
+            sql.append("'"+Constant.tx_br_no+"'");
             sql.append(");");
             sql.append("\n");
         }
         sql.append("select * from "+table+";");
 
         //insert into ACC_BIN_REL (ACC_NO,ACC_ID,ACC_SEQN,ACC_NAME,BND_ACC_TYPE,BND_ACC_NO,BND_ACC_NAME,BND_DATE,BND_CERT_TYPE,BND_CERT_NO,BND_PHONE_NO,BND_BANK_FLAG,BND_AUTH_FLAG,BND_STS,BR_NO)
-        // values((select distinct(ACC_NO_NEW) from AC_SEQN_MAP where ACC_NO_OLD = ''),null,1,'name','AT00','bnd_acc_no','name','20180401','ZJ01','bnd_cert_no','bnd_phone_no','BF00','AF00','BS00','850088');
+        // values((select distinct(ACC_NO_NEW) from AC_SEQN_MAP where ACC_NO_OLD = ''),null,1,'name','AT00','bnd_acc_no','name','20180401','ZJ01','bnd_cert_no','bnd_phone_no','BF00','AF00','BS00','"+Constant.tx_br_no+"');
 
     }
     public static List<AccBindBan> csv2List(List<CsvRow> rows){
