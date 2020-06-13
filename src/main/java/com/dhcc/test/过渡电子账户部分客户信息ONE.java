@@ -24,7 +24,7 @@ public class 过渡电子账户部分客户信息ONE {
         getSql(cifInfoEntities,sql);
         //sql 格式
         //insert into CIF_INFO_MID (CERT_NO,ACC_NO_NEW,ACC_ID,ACC_NO_OLD,CIF_NO_OLD,CERT_TYPE,CIF_NAME) values();
-        MyCsvUtil.writFile(sql.toString(),fileName+"one");
+        MyCsvUtil.writFile(sql.toString(),fileName.substring(0,fileName.lastIndexOf("."))+"one.cvs");
     }
 
     private static void getSql(List<CifInfoEntity> cifInfoEntities, StringBuilder sql) {

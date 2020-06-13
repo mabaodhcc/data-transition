@@ -97,15 +97,16 @@ public class TianShanSubAccountSEVEN {
             String de_ys_bal = "0";
             String de_rate=subAccount.get利率();
             int de_hst_cnt=0;
-            String de_opn_date=subAccount.get签约日期();
+            String de_opn_date=subAccount.get开户时间().trim();
+            de_opn_date = de_opn_date.substring(0,10).replace("-","");
             String de_ic_date=subAccount.get起息日();
             /*if(de_ic_date!=null || !"".equals(de_ic_date)){
                 System.out.println(de_ic_date);
                 de_ic_date.substring(0,10).replaceAll("-","");
             }*/
             //最后动账日= 上笔发生日
-            String de_last_date=subAccount.get最后动账日();
-            String de_mtr_date="99991231";
+            String de_last_date=subAccount.get上次结息日();
+            String de_mtr_date=subAccount.get终止日();
             String de_acc_sts=subAccount.get账户状态();
             String de_hold_sts = subAccount.get冻结状态();
             String de_hold_amt=subAccount.get冻结金额();
@@ -153,7 +154,9 @@ public class TianShanSubAccountSEVEN {
         String updateCifNo = "update de_mst_mid de set de_cif_no = (select cif_no_new from "+Constant.database_ecif+".cif_info_mid cim where de.de_tmp=cim.cif_no_old)" +
                 " where exists （select 1 from "+Constant.database_ecif+".cif_info_mid cim where de.de_tmp=cim.cif_no_old) and opn_br_no='"+Constant.tx_br_no+"';";
         String deInstDate = "UPDATE de_mst_mid set de_ints_date =NULL  where de_ints_date ='\\N' and opn_br_no ='"+Constant.tx_br_no+"';";
+        String deLastDate = "UPDATE de_mst_mid set de_last_date =NULL  where de_last_date ='\\N' and opn_br_no ='"+Constant.tx_br_no+"';";
         String deHoldAmt = "UPDATE de_mst_mid set de_hold_amt =NULL  where de_hold_amt ='\\N' and opn_br_no ='"+Constant.tx_br_no+"';";
+        String deMtrDate = "UPDATE de_mst_mid set de_mtr_date ='99991231'  where de_mtr_date ='\\N' and opn_br_no ='"+Constant.tx_br_no+"';";
         /*String updateAgaccno = "  update de_mst_mid a set (ag_acc_no,acc_id)=(select b.acc_no,b.acc_id from mdm_acc_rel b where a.de_cif_no=b.cif_no and opn_br_no='"+Constant.tx_br_no+"' " +
                 " and a.de_cif_no is not null) where exists （select 1 from mdm_acc_rel b where a.de_cif_no=b.cif_no and " +
                 " opn_br_no='"+Constant.tx_br_no+"' and a.de_cif_no is not null);";*/
@@ -188,6 +191,8 @@ public class TianShanSubAccountSEVEN {
                 " a.ag_acc_seqn = b.ag_acc_seqn and a.opn_br_no = '"+Constant.tx_br_no+"');\n";
         stringBuilder.append(updateCifNo+"\n");
         stringBuilder.append(deInstDate+"\n");
+        stringBuilder.append(deLastDate+"\n");
+        stringBuilder.append(deMtrDate+"\n");
 //        stringBuilder.append(deHoldAmt+"\n");
         stringBuilder.append(updateAgaccno+"\n");
         stringBuilder.append(prdt_no+"\n");
@@ -303,5 +308,14 @@ public class TianShanSubAccountSEVEN {
                 where opn_br_no='850088' and acc_seqn !=1 group by ag_acc_no union (select ag_acc_no,'ST00' as acc_seqn_type,  acc_seqn from de_mst_mid
                 where opn_br_no='850088' and acc_seqn =1)) b where a.ag_acc_no = b.ag_acc_no and  a.acc_seqn = b.acc_seqn
                 and not exists(select 1 from acc_seqn c where c.acc_id=a.acc_id);
+
+
 *
+*   重新导入de_mst表数据时，准备：
+    delete from acc_seqn where acc_id in(select acc_id from de_mst_mid)
+    select * from ecif_sign_prdt_info where br_no='850000'
+    delete from ecif_sign_prdt_info where br_no='850000'
+    select * from de_mst where opn_br_no='850088'
+    delete from de_mst where opn_br_no='850088',
+    删除de_mst_mid表
 * */

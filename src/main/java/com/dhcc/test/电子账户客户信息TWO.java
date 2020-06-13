@@ -30,7 +30,7 @@ public class 电子账户客户信息TWO {
         String sql = "update ACC_ID_SEQN set ACC_ID_SEQN=(select max(acc_id) from mdm_acc_rel) where ACC_ID_TYPE='IT00';";
         stringBuilder.append(sql);
         //两次用到这个文件
-        MyCsvUtil.writFile(stringBuilder.toString(),fileName+"two");
+        MyCsvUtil.writFile(stringBuilder.toString(),fileName.substring(0,fileName.lastIndexOf("."))+"two.cvs");
     }
     public static List<MdmAccRel> toProducts(List<CsvRow>  rows){
         List<MdmAccRel> mdmAccRels=new ArrayList<>(rows.size());
