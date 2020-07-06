@@ -54,7 +54,7 @@ public class 获得电子账户交易明细THREE {
                     " \"DE_STS\", \"SCENE_TYPE\", \"IMP_CHNL_TYPE\", \"RECO_DATE\", \"RECO_TRC_NO\", \"DE_PRDT_TRC_CNT\") " +
                     "VALUES ("+主机流水号+", "+流水笔次+", '"+ Constant.tx_br_no+"', 9999, 1, "+sql+", '"+户名+"', '"+产品编码+"', '"+交易码+"'," +
                     " NULL, '"+增减标志+"', '"+现转标志+"' , "+交易金额+", "+余额+","+余额+", 0, '"+交易日期+"', '"+机器日期+"'," +
-                    " '000000', NULL, NULL, 1, NULL,'PF00','"+摘要代码+"','"+摘要+"', NULL,NULL,NULL,NULL,'"+对方账号+"',NULL,NULL," +
+                    " '000000', NULL, NULL, 1, NULL,'PF00',NULL,'"+摘要+"', NULL,NULL,NULL,NULL,'"+对方账号+"',NULL,NULL," +
                     "'"+对方名称+"',NULL,NULL,NULL,NULL,'0061',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,"+sql+",1,NULL,NULL," +
                     "NULL,NULL,NULL,'"+明细状态+"',NULL,NULL,NULL,NULL,NULL);\n";
 

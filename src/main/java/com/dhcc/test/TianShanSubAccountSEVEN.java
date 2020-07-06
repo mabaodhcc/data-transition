@@ -187,7 +187,7 @@ public class TianShanSubAccountSEVEN {
         String insertDeMst ="insert into  de_mst select acc_id, ag_acc_no, ag_acc_seqn, acc_seqn, opn_br_no, ag_br_no, prdt_no, cur_no, de_bal, de_book_bal, de_ys_bal, de_rate, " +
                 "de_hst_cnt, de_opn_date, de_ic_date, de_last_date, de_mtr_date, de_acc_sts, de_hold_sts, de_hold_amt, de_stop_pay_sts, de_stop_pay_amt, de_ctl_amt, de_od_flag, " +
                 "de_cif_no, de_open_flag,de_mac, de_ints_date, de_cif_last_date,de_rate_type, de_cash_flag, de_acc_type, de_intst, de_unpay_intst, de_amt1, de_amt2,prdt_trade_date from" +
-                " de_mst_mid b where de_cif_no is not null and  length(acc_id)=12 and length(ag_acc_seqn)<=2 and not exists (select 1 from de_mst a where a.ag_acc_no = b.ag_acc_no and \n" +
+                " de_mst_mid b where de_cif_no is not null and  length(acc_id)=12 and length(ag_acc_seqn)<=2 and length(prdt_no)<9 and not exists (select 1 from de_mst a where a.ag_acc_no = b.ag_acc_no and \n" +
                 " a.ag_acc_seqn = b.ag_acc_seqn and a.opn_br_no = '"+Constant.tx_br_no+"');\n";
         stringBuilder.append(updateCifNo+"\n");
         stringBuilder.append(deInstDate+"\n");
@@ -318,4 +318,34 @@ public class TianShanSubAccountSEVEN {
     select * from de_mst where opn_br_no='850088'
     delete from de_mst where opn_br_no='850088',
     删除de_mst_mid表
+* */
+
+
+/*
+* 导数错误后删除数据
+* ecif_base_info
+* ecif_cert_info
+* ecif_login_info
+* ecif_risk_info
+* ecif_cif_no_rel
+* ecif_per_info
+* ecif_photo_info
+*
+* prdt_base_info
+* prdt_chnl_rel
+* prdt_cif_lvl_rel
+* prdt_info_rel
+* prdt_prox_br_rel
+* prdt_parm
+* prdt_br_rel
+* prdt_reco
+* prdt_mdm_rel
+*
+* de_mst
+* acc_seqn
+* mdm_acc_rel
+* ecif_sign_prdt_info
+* acc_mange_rel
+* de_mst_hst
+* acc_bind_rel
 * */
